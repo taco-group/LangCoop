@@ -63,13 +63,6 @@ ln -s ${PWD}/carla/ external_paths/carla_root
 ```
 Note: we choose the setuptools==41 to install because this version has the feature `easy_install`. After installing the carla.egg you can install the lastest setuptools to avoid No module named distutils_hack.
 
-
-### Step 3: Download the perception expert checkpoints
-The checkpoint can be downloaded from:  [**Hugging Face - LangCoopModel**](https://huggingface.co/xiangbog/LangCoopModel)
-
-Once downloaded, move the entire checkpoint folder `v2xverse_late_multiclass_2025_01_28_08_49_56` to `opencood/logs`
-
-
 ## How to config?
 We support both local VLM deployment and API-based providers, as long as the requests are compatible with the OpenAI format.
 
@@ -121,7 +114,7 @@ Modify scripts/eval_driving_vlm.sh to ensure EGO_NUM is set correctly:
 export EGO_NUM=2
 ```
 
-### Using Local Deployed Models
+### [Optional] Using Local Deployed Models
 We use vLLM to deploy and run local models. Here are the detailed deployment steps:
 
 #### step1: Environment Setup
