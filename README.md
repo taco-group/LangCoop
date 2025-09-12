@@ -198,13 +198,6 @@ Configurations are available in `vlmdrive/controller/hypes_yaml`.
 
 ## Experiments
 
-### Run close-loop evaluation
-#### step1: launch Carla v0.9.10.1
-```Shell
-CUDA_VISIBLE_DEVICES=0 ./external_paths/carla_root/CarlaUE4.sh --world-port=20000 -prefer-nvidia
-```
-Ensure that the port matches the configuration in `bash_files/testing/*`.
-
 #### step2(option): launch local VLLM
 For heterogeneous testing, multiple VLLM services must be started, each on a different port. For example, ensure that the model’s port matches the configuration in `vlmdrive/vlm/hypes_yaml/api_vlm_drive_speed_curvature_qwen2-2b-awq.yaml`.
 
@@ -220,11 +213,19 @@ CUDA_VISIBLE_DEVICES=3 python -m vllm.entrypoints.openai.api_server \
     --trust-remote-code
 ```
 
+### Run close-loop evaluation
+#### step1: launch Carla v0.9.10.1
+```Shell
+CUDA_VISIBLE_DEVICES=0 ./external_paths/carla_root/CarlaUE4.sh --world-port=2002 -prefer-nvidia  # Please make sure world-port matches the Carla_port=xxxx in the bash file.
+```
+Ensure that the port matches the configuration in `bash_files/testing/*`.
+
 #### step3: run exp
 ```bash
 bash bash_files/testing/speed_curvature_CoT_concise_image_intent_2agent.sh
 ```
 You can find logs and results under `results/`
+Aagin, please make sure that `Carla_port=xxxx` matches the Carla `--world-port=xxxx`
 
 ## Running with the Provided Docker Image
 The code is located in ~/langcoop/. To ensure you have the latest version, pull updates or mount a fresh clone when launching the container. You can run CARLA and VLLM externally as long as the necessary ports are exposed.
