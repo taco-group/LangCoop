@@ -198,7 +198,7 @@ Configurations are available in `vlmdrive/controller/hypes_yaml`.
 
 ## Experiments
 
-#### step2(option): launch local VLLM
+#### (option): launch local VLLM
 For heterogeneous testing, multiple VLLM services must be started, each on a different port. For example, ensure that the model’s port matches the configuration in `vlmdrive/vlm/hypes_yaml/api_vlm_drive_speed_curvature_qwen2-2b-awq.yaml`.
 
 ```bash
@@ -219,8 +219,9 @@ CUDA_VISIBLE_DEVICES=3 python -m vllm.entrypoints.openai.api_server \
 CUDA_VISIBLE_DEVICES=0 ./external_paths/carla_root/CarlaUE4.sh --world-port=2002 -prefer-nvidia  # Please make sure world-port matches the Carla_port=xxxx in the bash file.
 ```
 Ensure that the port matches the configuration in `bash_files/testing/*`.
+Please make sure `world-port` matches the `Carla_port=xxxx` in the bash file.
 
-#### step3: run exp
+#### step2: run exp
 ```bash
 bash bash_files/testing/speed_curvature_CoT_concise_image_intent_2agent.sh
 ```
