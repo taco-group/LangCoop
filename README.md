@@ -219,6 +219,7 @@ CUDA_VISIBLE_DEVICES=3 python -m vllm.entrypoints.openai.api_server \
 CUDA_VISIBLE_DEVICES=0 ./external_paths/carla_root/CarlaUE4.sh --world-port=2002 -prefer-nvidia  # Please make sure world-port matches the Carla_port=xxxx in the bash file.
 ```
 Ensure that the port matches the configuration in `bash_files/testing/*`.
+
 Please make sure `world-port` matches the `Carla_port=xxxx` in the bash file.
 
 #### step2: run exp
@@ -226,6 +227,7 @@ Please make sure `world-port` matches the `Carla_port=xxxx` in the bash file.
 bash bash_files/testing/speed_curvature_CoT_concise_image_intent_2agent.sh
 ```
 You can find logs and results under `results/`
+
 Aagin, please make sure that `Carla_port=xxxx` matches the Carla `--world-port=xxxx`
 
 ## Running with the Provided Docker Image
