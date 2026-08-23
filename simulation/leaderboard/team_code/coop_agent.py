@@ -476,9 +476,9 @@ class ImageAgent(AutonomousAgent):
         control = carla.VehicleControl()
         pid_control = self._agent._local_planner.run_step(goal = 'Forward')
         if pred_throttle is not None:
-            control.throttle = np.float(pred_throttle)*1.5
-            control.brake = np.float(pred_brake)
-            control.steer = np.float(pred_steer)
+            control.throttle = float(pred_throttle)*1.5
+            control.brake = float(pred_brake)
+            control.steer = float(pred_steer)
             print("Model's Output:\t[{:.2f},\t{:.2f},\t{:.2f}]".format(control.throttle, control.brake, control.steer))
             if control.brake >= control.throttle or control.brake>0.7:
                 control.throttle = 0.0
